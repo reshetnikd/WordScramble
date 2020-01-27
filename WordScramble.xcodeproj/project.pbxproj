@@ -13,6 +13,7 @@
 		353F7E7F23DD8BF500DFB209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 353F7E7E23DD8BF500DFB209 /* Assets.xcassets */; };
 		353F7E8223DD8BF500DFB209 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 353F7E8123DD8BF500DFB209 /* Preview Assets.xcassets */; };
 		353F7E8523DD8BF500DFB209 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 353F7E8323DD8BF500DFB209 /* LaunchScreen.storyboard */; };
+		359274C523DF49C90056E4BA /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 359274C423DF49C90056E4BA /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		353F7E8123DD8BF500DFB209 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		353F7E8423DD8BF500DFB209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		353F7E8623DD8BF500DFB209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		359274C423DF49C90056E4BA /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				353F7E7C23DD8BF400DFB209 /* ContentView.swift */,
 				353F7E7E23DD8BF500DFB209 /* Assets.xcassets */,
 				353F7E8323DD8BF500DFB209 /* LaunchScreen.storyboard */,
+				359274C423DF49C90056E4BA /* start.txt */,
 				353F7E8623DD8BF500DFB209 /* Info.plist */,
 				353F7E8023DD8BF500DFB209 /* Preview Content */,
 			);
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				353F7E8523DD8BF500DFB209 /* LaunchScreen.storyboard in Resources */,
+				359274C523DF49C90056E4BA /* start.txt in Resources */,
 				353F7E8223DD8BF500DFB209 /* Preview Assets.xcassets in Resources */,
 				353F7E7F23DD8BF500DFB209 /* Assets.xcassets in Resources */,
 			);
