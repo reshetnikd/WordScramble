@@ -10,56 +10,41 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let people = ["Finn", "Leia", "Luke", "Rey"]
+    @State private var usedWords = [String]()
+    @State private var rootWord = ""
+    @State private var newWord = ""
     
     var body: some View {
-//        List {
-//            Section(header: Text("Section 1")) {
-//                Text("Static row 1")
-//                Text("Static row 2")
-//            }
-//
-//            Section(header: Text("Section 2")) {
-//                ForEach(0..<5) {
-//                    Text("Dynamic row \($0)")
-//                }
-//            }
-//
-//            Section(header: Text("Section 3")) {
-//                Text("Static row 3")
-//                Text("Static row 4")
-//            }
-//        }
-//        .listStyle(GroupedListStyle())
-        
-        List {
-            ForEach(people, id: \.self) {
-                Text($0)
+        NavigationView {
+            VStack {
+                TextField("Enter your word", text: $newWord, onCommit: addNewWord)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)
+                    .padding()
+                
+                List(usedWords, id: \.self) {
+                    Image(systemName: "\($0.count).circle")
+                    Text($0)
+                }
             }
+            .navigationBarTitle(rootWord)
         }
     }
     
-//    if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
-//        // we found the file in our bundle!
-//    }
-//
-//    if let fileContents = try? String(contentsOf: fileURL) {
-//        // we loaded the file into a string!
-//    }
-    
-//    let input = """
-//                a
-//                b
-//                c
-//                """
-//    let letters = input.components(separatedBy: "\n")
-//    let letter = letters.randomElement()
-//    let trimmed = letter?.trimmingCharacters(in: .whitespacesAndNewlines)
-//    let word = "swift"
-//    let checker = UITextChecker()
-//    let range - NSRange(location: 0, lengh: word.utf16.count)
-//    let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
-//    let allGood = misspelledRange.location == NSNotFound
+    func addNewWord() {
+        // lowercase and trim the word, to make sure we don't add duplicate words with case differences
+        let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // exit if the remaining string is empty
+        guard answer.count > 0 else {
+            return
+        }
+        
+        // extra validation to come
+        
+        usedWords.insert(answer, at: 0)
+        newWord = ""
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
