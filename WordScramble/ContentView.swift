@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var errorTitle = ""
     @State private var errorMessage = ""
     @State private var showingError = false
+    @State private var score = 0
     
     var body: some View {
         NavigationView {
@@ -29,8 +30,17 @@ struct ContentView: View {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
+                
+                Text("Your score: \(score)")
+                    .fontWeight(.heavy)
+                    .font(.title)
             }
             .navigationBarTitle(rootWord)
+            .navigationBarItems(leading:
+                Button(action: startGame) {
+                    Text("Play")
+                }
+            )
         }
         .onAppear(perform: startGame)
         .alert(isPresented: $showingError) {
@@ -63,11 +73,12 @@ struct ContentView: View {
         }
         
         usedWords.insert(answer, at: 0)
+        score += usedWords.count * (newWord.count >= 5 ? 2 : 1)
         newWord = ""
     }
     
     func isOriginal(word: String) -> Bool {
-        !usedWords.contains(word)
+        return !usedWords.contains(word) && word != rootWord
     }
     
     func isPossible(word: String) -> Bool {
@@ -88,6 +99,10 @@ struct ContentView: View {
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
+        // Disallow answers that are shorter than three letters
+        if word.count < 3 {
+            return false
+        }
         
         return misspelledRange.location == NSNotFound
     }
@@ -108,6 +123,8 @@ struct ContentView: View {
                 
                 // 4. Pick one random word, or use "silkworm" as a sensible default
                 rootWord = allWords.randomElement() ?? "silkworm"
+                
+                usedWords.removeAll()
                 
                 // If we are here everything has worked, so we can exit
                 return
